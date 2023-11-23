@@ -1,0 +1,205 @@
+/*
+ * CSS Reset
+ * cr: Josh W. Comeau
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/**
+ * Custom styles
+ */
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: sans-serif;
+}
+
+.container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  display: none;
+}
+
+.board-size {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.board-size label {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.board-size select {
+  all: unset;
+  padding: 6px 32px 6px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid hsl(210 14% 53% / 0.2);
+
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23000000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.25rem center;
+  background-repeat: no-repeat;
+  background-size: 1.35em 1.35em;
+}
+
+.board-wrapper {
+  overflow: hidden;
+  border: 1px solid white;
+}
+
+.board-wrapper div:first-of-type {
+  margin: -1px;
+}
+
+.board {
+  display: grid;
+  width: 450px;
+  height: 450px;
+  flex-shrink: 0;
+}
+
+.board button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 1px solid darkslategrey;
+  line-height: 0;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.board button:enabled:hover {
+  background: hsl(210 14% 53% / 0.05);
+}
+
+.player-indicator {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.player-indicator li {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.player-indicator li > div {
+  border: 1px solid hsl(210 14% 53% / 0.5);
+  border-radius: 6px;
+}
+
+.player-indicator p {
+  text-align: center;
+  line-height: 1;
+  margin: 0;
+}
+
+.player-indicator p:first-of-type {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 16px 32px;
+}
+
+.player-indicator p:last-of-type {
+  font-size: 14px;
+  padding: 12px 32px;
+  background-color: hsl(210 14% 53% / 0.2);
+}
+
+.player-indicator li.active > div {
+  border-color: hsl(203 92% 75% / 0.5);
+}
+
+.player-indicator li.active > div p:last-of-type{
+  background-color: hsl(203 92% 75% / 0.3);
+}
+
+.player-indicator li.winner > div {
+  border-color: hsl(177 70% 41% / 0.5);
+}
+
+.player-indicator li.winner > div p:last-of-type{
+  background-color: hsl(177 70% 41% / 0.3);
+}
+
+#restart {
+  all: unset;
+  color: darkslategray;
+  margin-top: 36px;
+  align-self: center;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  border: 1px solid hsl(210 14% 53% / 0.2);
+}
+
+#restart:hover {
+  background-color: hsl(210 14% 53% / 0.05);
+}
