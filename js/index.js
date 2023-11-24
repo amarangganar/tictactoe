@@ -1,8 +1,9 @@
 const boardEl = document.getElementById("board");
-const boardSizeSelectEl = document.getElementById("board-size");
+const boardSizeInputEl = document.getElementById("board-size");
+const boardSizeText = document.getElementById("board-size-text");
 const restartEl = document.getElementById("restart");
 
-let boardSize = +boardSizeSelectEl.value; // set default board size
+let boardSize = +boardSizeInputEl.value; // set default board size
 let board = [];
 let lastMove = ""; // keep track on players last move
 
@@ -155,15 +156,15 @@ function handleCellClick(event) {
 
   toggleActivePlayer(move);
 
-  if (checkWinner(move) || checkDraw()) {
-    const message = checkDraw()
-      ? "The game ends with a draw!"
-      : `${PLAYER_LOOKUP[move]} won!`;
-
+  if (checkWinner(move)) {
     toggleActivePlayer(move, checkWinner(move));
 
     setTimeout(() => {
-      window.alert(message);
+      window.alert(`${PLAYER_LOOKUP[move]} won!`);
+    }, 100);
+  } else if (checkDraw()) {
+    setTimeout(() => {
+      window.alert("The game ends with a draw!");
     }, 100);
   }
 }
@@ -187,9 +188,16 @@ function generateBoard(size) {
     [...Array(size)].map((_, colIdx) => generateCell(rowIdx, colIdx))
   );
 
-  lastMove = "";
+  // display board size
+  boardSizeText.textContent = boardSize;
+
+  // set font to small on larger board
+  if(boardSize > 15) {
+    boardEl.style.fontSize = 'small'
+  }
 
   // set first player indicator active
+  lastMove = "";
   toggleActivePlayer("", false);
 
   // render board
@@ -199,10 +207,14 @@ function generateBoard(size) {
 }
 
 // add event listener onchange on board size select element
-boardSizeSelectEl.addEventListener("change", (event) => {
+boardSizeInputEl.addEventListener("change", (event) => {
   size = +event.target.value;
-  boardSize = size;
+  if(Number.isNaN(size) || size < 1) {
+    window.alert('Board size should be greater than 0 and a number.');
+    return;
+  }
 
+  boardSize = size;
   generateBoard(size);
 });
 
