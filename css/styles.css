@@ -58,17 +58,20 @@ body {
   height: 100%;
   width: 100%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   font-family: sans-serif;
 }
 
 .container {
+  min-height: 100%;
   max-width: 768px;
   margin: 0 auto;
-  padding: 16px;
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
   display: flex;
   flex-direction: column;
 }
@@ -82,25 +85,44 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 32px;
+  margin-bottom: 12px;
 }
 
 .board-size label {
+  display: block;
   font-weight: 700;
   font-size: 14px;
 }
 
-.board-size select {
+.board-size-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.board-size-field input {
   all: unset;
-  padding: 6px 32px 6px 12px;
+  padding: 4px 8px;
   font-size: 14px;
   border-radius: 6px;
   border: 1px solid hsl(210 14% 53% / 0.2);
+  width: 32px;
+}
 
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23000000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.25rem center;
-  background-repeat: no-repeat;
-  background-size: 1.35em 1.35em;
+.board-size-field input:focus {
+  outline: 1px dotted #212121;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.board-size-field p {
+  font-size: 14px;
+}
+
+.disclaimer {
+  font-size: 10px;
+  color: crimson;
+  text-align: center;
+  margin-bottom: 32px;
 }
 
 .board-wrapper {
@@ -117,6 +139,7 @@ h1 {
   width: 450px;
   height: 450px;
   flex-shrink: 0;
+  font-size: xx-large;
 }
 
 .board button {
@@ -127,7 +150,6 @@ h1 {
   font-weight: bold;
   border: 1px solid darkslategrey;
   line-height: 0;
-  font-size: 36px;
   cursor: pointer;
 }
 
@@ -176,7 +198,7 @@ h1 {
   border-color: hsl(203 92% 75% / 0.5);
 }
 
-.player-indicator li.active > div p:last-of-type{
+.player-indicator li.active > div p:last-of-type {
   background-color: hsl(203 92% 75% / 0.3);
 }
 
@@ -184,7 +206,7 @@ h1 {
   border-color: hsl(177 70% 41% / 0.5);
 }
 
-.player-indicator li.winner > div p:last-of-type{
+.player-indicator li.winner > div p:last-of-type {
   background-color: hsl(177 70% 41% / 0.3);
 }
 
@@ -202,4 +224,9 @@ h1 {
 
 #restart:hover {
   background-color: hsl(210 14% 53% / 0.05);
+}
+
+#restart:focus {
+  outline: 1px dotted #212121;
+  outline: 5px auto -webkit-focus-ring-color;
 }
