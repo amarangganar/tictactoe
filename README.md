@@ -1,2 +1,10 @@
 # TicTacToe
-A simple tic tac toe game built with HTML, CSS, and vanilla JavaScript. The board size can be changed from 3x3 up to 9x9.
+A simple two-players tic tac toe game with a dynamic board size. Let's [play](http://tictactoe.test)!
+
+## Tech Stack
+- HTML
+- CSS
+- Vanilla JavaScript
+
+## Disclaimer
+This game is not optimize for larger board (size 25 at most for best view).
